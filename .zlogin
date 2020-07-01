@@ -1,1 +1,2 @@
+config pull
 clear
