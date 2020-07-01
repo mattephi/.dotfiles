@@ -25,35 +25,21 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=nvim
-export CFGBCKP="/Users/m8dotpie/Desktop/MSB"
 
 alias ..="cd .."
 alias ncfg="nvim $HOME/.config/nvim/init.vim"
 alias zcfg="nvim $HOME/.zshrc"
-alias gitbackup="autoBackupSettings"
 alias config='/usr/bin/git --git-dir=$HOME/.m8cfg/ --work-tree=$HOME'
 alias configignore='config config --local status.showUntrackedFiles no'
 
-function autoBackupSettings() {
-	cp ~/.zlogin $CFGBCKP/ZSH
-	cp ~/.zlogout $CFGBCKP/ZSH
-	cp ~/.zshrc $CFGBCKP/ZSH
-	cp ~/.config/nvim/init.vim $CFGBCKP/NVIM
-	git -C $CFGBCKP add .
-	git -C $CFGBCKP commit -m auto-update
-	git -C $CFGBCKP push
+function configBackup() {
+	cd
+	config commit -a -m "Autopush"
+	config push -u origin master
 }
 
-function preview () {
-	open -a Preview $1
-}
-
-function compilecpp() {
+function ccpp() {
 	clang++ -std=c++17 -O2 -g -o out -D M8_LOCAL -fsanitize=address -fsanitize=bounds -fno-sanitize-recover=all -fstack-protector -fsanitize=undefined $1
-}
-
-function mkcpp() {
-	cp $CFGBCKP/CPP/cpptemplate.cpp $1
 }
 
 # >>> conda initialize >>>
