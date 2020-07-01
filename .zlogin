@@ -1,3 +1,2 @@
 config pull
 clear
-pfetch
