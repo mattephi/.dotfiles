@@ -1,9 +1,6 @@
 " Author: m8.pie
 " NOTE: if you know what setting does and it is uncommented or marked as 'IDK'
 " - feel free to let me know.
-" NOTE: I modified lightline-landscape files in order to make tabline to look
-" much better, modified version stored with this file.
-" Replace lightline.vim/autoload/lightline/coloscheme/lightline.vim with it.
 
 call plug#begin('~/.config/nvim/plugged')
 " General {{{
