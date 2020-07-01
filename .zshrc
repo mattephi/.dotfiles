@@ -27,8 +27,6 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=nvim
 
 alias ..="cd .."
-alias ncfg="nvim $HOME/.config/nvim/init.vim"
-alias zcfg="nvim $HOME/.zshrc"
 alias config='/usr/bin/git --git-dir=$HOME/.m8cfg/ --work-tree=$HOME'
 alias configignore='config config --local status.showUntrackedFiles no'
 

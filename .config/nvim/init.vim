@@ -105,6 +105,7 @@ call plug#begin('~/.config/nvim/plugged')
 " }}}
 " Plugins {{{
 	" XKBSwitch {{{
+	" NOTE: This plugin requires additional library installations.
 		Plug 'https://github.com/lyokha/vim-xkbswitch'
 		let g:XkbSwitchEnabled = 1 " enable this plugin
 		let g:XkbSwitchNLayout = 'ABC' " default OSX keyboard layout
@@ -215,20 +216,21 @@ call plug#begin('~/.config/nvim/plugged')
 		set conceallevel=1
 		let g:tex_conceal='abdmg'
 	" }}}
-	Plug 'gootorov/q-sharp.vim'
+	" Q# Language support {{{
+		Plug 'gootorov/q-sharp.vim'
+	" }}}
 " }}}
 call plug#end()
 
 " NOTE: enabling colorscheme must procede after all plugins load.
 colorscheme landscape " set current colorscheme to my favourite
 
-" TODO: install left plugins
-" TODO: add compilation function common for different extensions
-
 nmap <F5> :call Compile() <CR>
 nmap <F6> :call Compile() <CR> :call Run() <CR>
+
 inoremap jj <Esc>
 
+" TODO: rewrite correctly and expand functionality one day.
 fu! Compile()
 	let ex = expand("%:e")
 	if (ex == "cpp")
@@ -238,6 +240,7 @@ fu! Compile()
 	endif
 endfu
 
+" TODO: rewrite correctly and expand functionality one day.
 fu! Run()
 	let ex = expand("%:e")
 	if (ex == "cpp")
