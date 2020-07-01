@@ -3,13 +3,13 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME='arrow'
 
 export UPDATE_ZSH_DAYS=2
-export PATH=$PATH:~/chrd # Chromedriver
-export PATH=$PATH:~/anaconda3/bin # Anaconda binaries
-export PATH=$PATH:~/flutter/bin # Flutter binaries
-export PATH=$PATH:~/.pub-cache/bin
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/platform-tools # ADB and Fastboot tools
-export PATH=$PATH:~/.emacs.d/bin
+export PATH=$PATH:$HOME/chrd # Chromedriver
+export PATH=$PATH:$HOME/anaconda3/bin # Anaconda binaries
+export PATH=$PATH:$HOME/flutter/bin # Flutter binaries
+export PATH=$PATH:$HOME/.pub-cache/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/platform-tools # ADB and Fastboot tools
+export PATH=$PATH:$HOME/.emacs.d/bin
 export PATH=$PATH:/usr/local/sbin
 
 export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
@@ -28,8 +28,8 @@ export EDITOR=nvim
 export CFGBCKP="/Users/m8dotpie/Desktop/MSB"
 
 alias ..="cd .."
-alias ncfg="nvim ~/.config/nvim/init.vim"
-alias zcfg="nvim ~/.zshrc"
+alias ncfg="nvim $HOME/.config/nvim/init.vim"
+alias zcfg="nvim $HOME/.zshrc"
 alias gitbackup="autoBackupSettings"
 alias config='/usr/bin/git --git-dir=$HOME/.m8cfg/ --work-tree=$HOME'
 alias configignore='config config --local status.showUntrackedFiles no'
