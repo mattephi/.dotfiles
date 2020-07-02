@@ -227,7 +227,7 @@ myManageHook = composeAll . concat $
     where
     myWeb = ["Firefox", "Chrome", "Chromium"]
     myDev = ["emacs", "Gedit"]
-    myTerm = ["tilix"]
+    myTerm = ["tilix", "gnome-terminal", "termonad"]
     mySocial = ["telegram"]
 
 
