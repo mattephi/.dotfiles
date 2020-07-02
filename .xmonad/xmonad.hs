@@ -214,12 +214,21 @@ myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll . concat $
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore
-		,	[manageDocks]
-		]
+    [ [className =? "MPlayer"        --> doFloat]
+    , [className =? "Gimp"           --> doFloat]
+    , [resource  =? "desktop_window" --> doIgnore]
+    , [resource  =? "kdesktop"       --> doIgnore]
+    , [className =? c --> doF (W.shift "1:web") | c <- myWeb]
+    , [className =? c --> doF (W.shift "2:dev") | c <- myDev]
+    , [className =? c --> doF (W.shift "3:term") | c <- myTerm]
+    , [className =? c --> doF (W.shift "4:social") | c <- mySocial]
+    , [manageDocks]
+    ]
+    where
+    myWeb = ["Firefox", "Chrome", "Chromium"]
+    myDev = ["emacs", "Gedit"]
+    myTerm = ["tilix"]
+    mySocial = ["telegram"]
 
 
 ------------------------------------------------------------------------
