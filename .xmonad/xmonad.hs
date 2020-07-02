@@ -50,7 +50,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces    = ["web","dev","term","social","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -213,11 +213,14 @@ myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = composeAll
+myManageHook = composeAll . concat $
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , resource  =? "kdesktop"       --> doIgnore
+		,	[manageDocks]
+		]
+
 
 ------------------------------------------------------------------------
 -- Event handling
