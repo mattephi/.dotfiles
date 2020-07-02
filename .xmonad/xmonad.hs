@@ -14,10 +14,29 @@ import qualified Data.Map        as M
 myTerminal = "tilix"
 myModMask = mod4Mask
 
+-- Hooks:Init
+myStartupHook = do
+    spawnOnce "nitrogen --restore &"
+    spawnOnce "compton &"
+
+myLayoutHook = avoidStruts (tiled ||| Full)
+    where
+        tiled     = Tall nmaster delta ratio
+        nmaster   = 1
+        ratio     = 1/2
+        delta     = 3/100
+
 defaults = def {
+    -- Stuff
     terminal = myTerminal,
-    modMask = myModMask
+    modMask = myModMask,
+
+    -- Hooks
+    startupHook = myStartupHook,
+    layoutHook = myLayoutHook
+
 }
 
 main = do
+    xmproc <- spawnPipe "xmobar ~/.config/xmobar/xmobar.config"
     xmonad $ defaults
