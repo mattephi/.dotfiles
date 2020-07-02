@@ -1,3 +1,6 @@
+# NOTE: make sure your terminal session starts as login-shell
+# this is important for .zlogin and .zlogout
+
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME='arrow'
