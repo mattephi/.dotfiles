@@ -20,4 +20,4 @@ defaults = def {
 }
 
 main = do
-    xmonad $ def
+    xmonad $ defaults
