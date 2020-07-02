@@ -250,7 +250,23 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook = dynamicLogWithPP $ defaultPP {
+            ppOutput = System.IO.hPutStrLn xmproc
+          , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+          , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor "" . wrap "[" "]"
+          , ppSep = "   "
+          , ppWsSep = " "
+          , ppLayout  = (\ x -> case x of
+              "Spacing 6 Mosaic"                      -> "[:]"
+              "Spacing 6 Mirror Tall"                 -> "[M]"
+              "Spacing 6 Hinted Tabbed Simplest"      -> "[T]"
+              "Spacing 6 Full"                        -> "[ ]"
+              _                                       -> x )
+          , ppHiddenNoWindows = showNamedWorkspaces
+      }
+      where showNamedWorkspaces wsId = if any (`elem` wsId) ['a'..'z']
+                                       then pad wsId
+                                       else ""
 
 ------------------------------------------------------------------------
 -- Startup hook
