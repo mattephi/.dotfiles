@@ -10,6 +10,7 @@ export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/platform-tools # ADB and Fastboot tools
 export PATH=$PATH:$HOME/.emacs.d/bin
+export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/usr/local/sbin
 
 export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
