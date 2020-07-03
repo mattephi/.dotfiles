@@ -22,8 +22,8 @@ myStartupHook = do
     spawnOnce "compton &"
 
 myLayoutHook = avoidStruts (spacingRaw 
-                            False  (Border 5 0 5 0) 
-                            True   (Border 0 5 0 5) 
+                            False  (Border 10 0 10 0)
+                            True   (Border 0 10 0 10)
                             True $ (tiled ||| Full))
     where
         tiled     = Tall nmaster delta ratio
