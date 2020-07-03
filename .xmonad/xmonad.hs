@@ -1,19 +1,19 @@
 
 import XMonad
-import Data.Monoid
-import System.Exit
-import System.IO
+-- import Data.Monoid
+-- import System.Exit
+-- import System.IO
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.DynamicLog
+-- import XMonad.Hooks.DynamicLog
 import XMonad.Layout.Spacing
 
-import qualified XMonad.StackSet as W
-import qualified Data.Map        as M
+-- import qualified XMonad.StackSet as W
+-- import qualified Data.Map        as M
 
 myTerminal = "tilix"
-myBorderWidth = 2
+myBorderWidth = 3
 myModMask = mod4Mask
 
 -- Hooks:Init
