@@ -43,6 +43,7 @@ defaults = def {
 
 }
 
+main :: IO ()
 main = do
     xmproc <- spawnPipe "xmobar ~/.config/xmobar/xmobar.config"
     xmonad $ docks defaults
