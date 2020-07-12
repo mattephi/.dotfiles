@@ -33,6 +33,7 @@ export EDITOR=nvim
 alias ..="cd .."
 alias config='/usr/bin/git --git-dir=$HOME/.m8cfg/ --work-tree=$HOME'
 alias configignore='config config --local status.showUntrackedFiles no'
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 
 function configBackup() {
 	cd
