@@ -9,3 +9,4 @@
 (setq org-directory "~/org/") ;; Default org location
 
 (setq display-line-numbers-type 'relative) ;; Relative line numbers
+
