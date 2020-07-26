@@ -8,6 +8,7 @@ import XMonad.Util.SpawnOnce
 import XMonad.Hooks.ManageDocks
 -- import XMonad.Hooks.DynamicLog
 import XMonad.Layout.Spacing
+import XMonad.Hooks.SetWMName
 
 -- import qualified XMonad.StackSet as W
 -- import qualified Data.Map        as M
@@ -20,6 +21,7 @@ myModMask = mod4Mask
 myStartupHook = do
     spawnOnce "nitrogen --restore &"
     spawnOnce "compton &"
+    setWMName "LG3D" -- JVM has WM whitelist, so it is necessary
 
 myLayoutHook = avoidStruts (spacingRaw 
                             False  (Border 10 0 10 0)
