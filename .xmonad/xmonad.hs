@@ -13,7 +13,7 @@ import XMonad.Hooks.SetWMName
 -- import qualified XMonad.StackSet as W
 -- import qualified Data.Map        as M
 
-myTerminal = "tilix"
+myTerminal = "alacritty"
 myBorderWidth = 3
 myModMask = mod4Mask
 
