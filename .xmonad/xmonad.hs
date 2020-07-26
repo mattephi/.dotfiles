@@ -16,8 +16,13 @@ import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
 -- import qualified XMonad.StackSet as W
 -- import qualified Data.Map        as M
 
-myKeys = [("<XF86MonBrightnessUp>", spawn "lux -a 2%")    
-        , ("<XF86MonBrightnessDown>", spawn "lux -s 2%")
+scrLightPath = "sysfs/backlight/intel_backlight"
+kbdLightPath = "sysfs/leds/spi::kbd_backlight"
+
+myKeys = [("<XF86MonBrightnessUp>", spawn ("light -s " ++ scrLightPath ++ " -A 2"))
+        , ("<XF86MonBrightnessDown>", spawn ("light -s " ++ scrLightPath ++ " -U 2"))
+        , ("<XF86KbdBrightnessUp>", spawn ("light -s " ++ kbdLightPath ++ " -A 10"))
+        , ("<XF86KbdBrightnessDown>", spawn ("light -s " ++ kbdLightPath ++ " -U 10"))
     ]
 
 myTerminal = "alacritty"
