@@ -2,7 +2,7 @@
 import XMonad
 -- import Data.Monoid
 -- import System.Exit
--- import System.IO
+import System.IO
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.ManageDocks
@@ -10,8 +10,14 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Spacing
 import XMonad.Hooks.SetWMName
 
+import Graphics.X11.ExtraTypes.XF86
+
 -- import qualified XMonad.StackSet as W
 -- import qualified Data.Map        as M
+
+myKeys = [("<XF86MonBrightnessUp>", spawn "lux -a 5%")    
+        , ("<XF86MonBrightnessDown>", spawn "lux -s 5%")
+    ]
 
 myTerminal = "alacritty"
 myBorderWidth = 3
