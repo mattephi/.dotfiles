@@ -3,20 +3,21 @@ import XMonad
 -- import Data.Monoid
 -- import System.Exit
 import System.IO
-import XMonad.Util.Run
+import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.ManageDocks
--- import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.DynamicLog
 import XMonad.Layout.Spacing
 import XMonad.Hooks.SetWMName
 
 import Graphics.X11.ExtraTypes.XF86
+import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
 
 -- import qualified XMonad.StackSet as W
 -- import qualified Data.Map        as M
 
-myKeys = [("<XF86MonBrightnessUp>", spawn "lux -a 5%")    
-        , ("<XF86MonBrightnessDown>", spawn "lux -s 5%")
+myKeys = [("<XF86MonBrightnessUp>", spawn "lux -a 2%")    
+        , ("<XF86MonBrightnessDown>", spawn "lux -s 2%")
     ]
 
 myTerminal = "alacritty"
@@ -54,4 +55,4 @@ defaults = def {
 main :: IO ()
 main = do
     xmproc <- spawnPipe "xmobar ~/.config/xmobar/xmobar.config"
-    xmonad $ docks defaults
+    xmonad $ docks defaults `additionalKeysP` myKeys
