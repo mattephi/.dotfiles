@@ -10,3 +10,10 @@
 
 (setq display-line-numbers-type 'relative) ;; Relative line numbers
 
+(setq explicit-shell-file-name "/bin/zsh")
+(getenv "PATH")
+ (setenv "PATH"
+(concat
+ "/Library/TeX/texbin" ":"
+
+(getenv "PATH")))
