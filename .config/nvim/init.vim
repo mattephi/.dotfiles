@@ -213,6 +213,7 @@ call plug#begin('~/.config/nvim/plugged')
 		Plug 'lervag/vimtex'
 		set conceallevel=1
 		let g:tex_conceal='abdmg'
+    let g:tex_flavor = 'latex'
 	" }}}
 	" Q# Language support {{{
 		Plug 'gootorov/q-sharp.vim'
