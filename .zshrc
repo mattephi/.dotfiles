@@ -29,6 +29,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=nvim
+export QUARTUS_ROOTDIR="/opt/quartus20/quartus"
 
 alias ..="cd .."
 alias config='/usr/bin/git --git-dir=$HOME/.m8cfg/ --work-tree=$HOME'

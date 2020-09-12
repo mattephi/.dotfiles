@@ -7,6 +7,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.Spacing
 import XMonad.Hooks.SetWMName
 
@@ -23,9 +24,11 @@ myKeys = [("<XF86MonBrightnessUp>", spawn ("light -s " ++ scrLightPath ++ " -A 2
         , ("<XF86MonBrightnessDown>", spawn ("light -s " ++ scrLightPath ++ " -U 2"))
         , ("<XF86KbdBrightnessUp>", spawn ("light -s " ++ kbdLightPath ++ " -A 10"))
         , ("<XF86KbdBrightnessDown>", spawn ("light -s " ++ kbdLightPath ++ " -U 10"))
+        , ("M-<Tab>", spawn ("rofi -show window"))
+        , ("M-p", spawn ("rofi -show run"))
     ]
 
-myTerminal = "alacritty"
+myTerminal = "gnome-terminal"
 myBorderWidth = 3
 myModMask = mod4Mask
 
@@ -52,8 +55,10 @@ defaults = def {
     borderWidth = myBorderWidth,
 
     -- Hooks
-    startupHook = myStartupHook,
-    layoutHook = myLayoutHook
+    startupHook = myStartupHook <+> ewmhDesktopsStartup,
+    layoutHook = myLayoutHook,
+    handleEventHook = ewmhDesktopsEventHook,
+    logHook = ewmhDesktopsLogHook
 
 }
 
