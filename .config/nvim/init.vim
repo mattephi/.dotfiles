@@ -136,7 +136,8 @@ call plug#begin('~/.config/nvim/plugged')
 					\ }
 		let g:lightline.active = {
 					\ 'left': [ [ 'mode', 'paste', ],
-					\		  [ 'readonly', 'modified' ] ],
+					\		  [ 'readonly', 'modified' ],
+          \     ['codestats']],
 					\ 'right':  [ [ 'lineinfo' ], 
 					\		    [ 'percent' ], 
 					\		    [ 'currenttime', 'batterystats', ] ]
@@ -218,6 +219,10 @@ call plug#begin('~/.config/nvim/plugged')
 	" Q# Language support {{{
 		Plug 'gootorov/q-sharp.vim'
 	" }}}
+  " Codestats {{{
+    Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
+    let g:codestats_api_key = 'SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
+  " }}}
 " }}}
 call plug#end()
 
