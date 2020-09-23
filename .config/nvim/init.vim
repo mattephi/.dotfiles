@@ -108,6 +108,9 @@ call plug#begin('~/.config/nvim/plugged')
 		let g:XkbSwitchEnabled = 1 " enable this plugin
 		let g:XkbSwitchNLayout = 'ABC' " default OSX keyboard layout
 	" }}}
+  " Quickscope {{{
+    Plug 'unblevable/quick-scope'
+  " }}}
 	" Automatic Relative Line Numbers {{{
 		Plug 'jeffkreeftmeijer/vim-numbertoggle'
 	" }}}
@@ -254,4 +257,7 @@ fu! Run()
 		:!python3 %
 	endif
 endfu
+
+highlight QuickScopePrimary guifg='#ffff00' gui=underline ctermfg=226 cterm=underline
+highlight QuickScopeSecondary guifg='#ff5f00' gui=underline ctermfg=202 cterm=underline
 
