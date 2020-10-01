@@ -102,12 +102,20 @@ call plug#begin('~/.config/nvim/plugged')
 	no <C-h> <C-w>h| 
 " }}}
 " Plugins {{{
-	" XKBSwitch {{{
+" " XKBSwitch {{{
 	" NOTE: This plugin requires additional library installations.
 		Plug 'https://github.com/lyokha/vim-xkbswitch'
 		let g:XkbSwitchEnabled = 1 " enable this plugin
 		let g:XkbSwitchNLayout = 'ABC' " default OSX keyboard layout
 	" }}}
+  " {{{
+    Plug 'https://github.com/lfilho/cosco.vim'
+    nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
+  " }}}
+  " {{{
+    Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+  " }}}
   " Quickscope {{{
     Plug 'unblevable/quick-scope'
   " }}}
