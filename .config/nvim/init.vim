@@ -217,6 +217,8 @@ call plug#begin('~/.config/nvim/plugged')
 	" }}}
 	" ALE {{{
 		Plug 'w0rp/ale'
+    Plug 'harenome/vim-mipssyntax'
+    
 	" }}}
 	" Dart {{{
 		Plug 'dart-lang/dart-vim-plugin'
@@ -268,4 +270,6 @@ endfu
 
 highlight QuickScopePrimary guifg='#ffff00' gui=underline ctermfg=226 cterm=underline
 highlight QuickScopeSecondary guifg='#ff5f00' gui=underline ctermfg=202 cterm=underline
+
+au Syntax asm runtime! syntax/mips.vim
 
