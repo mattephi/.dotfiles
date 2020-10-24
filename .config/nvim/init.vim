@@ -5,7 +5,7 @@
 call plug#begin('~/.config/nvim/plugged')
 " General {{{
 
-	filetype plugin on " IDK 
+	filetype plugin on " Enable filetype plugins
 	filetype indent on " IDK
 
 	set colorcolumn=80 " show char limit marker
@@ -271,5 +271,4 @@ endfu
 highlight QuickScopePrimary guifg='#ffff00' gui=underline ctermfg=226 cterm=underline
 highlight QuickScopeSecondary guifg='#ff5f00' gui=underline ctermfg=202 cterm=underline
 
-au Syntax asm runtime! syntax/mips.vim
-
+autocmd BufNewFile,BufRead *.asm set syntax=mips
