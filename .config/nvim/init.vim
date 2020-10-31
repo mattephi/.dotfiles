@@ -106,7 +106,7 @@ call plug#begin('~/.config/nvim/plugged')
 	" NOTE: This plugin requires additional library installations.
 		Plug 'https://github.com/lyokha/vim-xkbswitch'
 		let g:XkbSwitchEnabled = 1 " enable this plugin
-		let g:XkbSwitchNLayout = 'ABC' " default OSX keyboard layout
+		let g:XkbSwitchNLayout = '1' " default OSX keyboard layout
 	" }}}
   " {{{
     Plug 'https://github.com/lfilho/cosco.vim'
@@ -246,6 +246,7 @@ nmap <F5> :call Compile() <CR>
 nmap <F6> :call Compile() <CR> :call Run() <CR>
 
 inoremap jj <Esc>
+inoremap оо <Esc>
 
 " TODO: rewrite correctly and expand functionality one day.
 fu! Compile()
