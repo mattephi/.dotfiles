@@ -62,3 +62,4 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+[ -f "/Users/m8dotpie/.ghcup/env" ] && source "/Users/m8dotpie/.ghcup/env" # ghcup-env
