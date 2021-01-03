@@ -1,103 +1,66 @@
 " Author: m8.pie
-" NOTE: if you know what setting does and it is uncommented or marked as 'IDK'
-" - feel free to let me know.
+" Website: m8dotpie.github.io/m8blog
+
+filetype plugin on " Enable filetype plugins
+filetype indent on " IDK
+
+set colorcolumn=90 " show char limit marker
+set hidden  " allow buffer switching without saving
+set shell=/bin/zsh\ -i " set terminal environment to zsh
+set showtabline=2 " always enable tabline
+set autoread " detect when a file is changed
+set history=1000 " change history to 1000
+set textwidth=120
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backspace=indent,eol,start " make backspace behave in a sane manner
+set ignorecase " case insensitive searching
+set smartcase " case-sensitive if expresson contains a capital letter
+set hlsearch " highlight search results
+set incsearch " set incremental search, like modern browsers
+set nolazyredraw " don't redraw while executing macros
+set mouse=a " enable mouse in all modes
+set magic " set magic on, for regex
+set noerrorbells
+set visualbell
+set tm=500
+
+" Apperance
+syntax on " enable syntax highlighting
+set number " enable line numbers
+set wrap " turn on line wrapping
+set wrapmargin=8 " wrap lines when coming within n characters from side
+set linebreak " set soft wrapping
+set autoindent " automatically set indent of new line
+set diffopt+=vertical,iwhite,internal,algorithm:patience,hiddenoff
+set laststatus=2 " show the status line all the time
+set so=7 " set 7 lines to the cursors - when moving vertical
+set showcmd " show incomplete commands
+set noshowmode " don't show which mode disabled for PowerLine
+set cmdheight=1 " command bar height
+set title " set terminal title
+set showmatch " show matching braces
+set mat=2 " how many tenths of a second to blink
+set updatetime=300
+set signcolumn=yes
+set shortmess+=c
+
+" Tab control
+set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+set tabstop=2 " the visible width of tabs
+set softtabstop=2 " edit as if the tabs are 4 characters wide
+set expandtab " spaces instead of tabs
+set shiftwidth=4 " number of spaces to use for indent and unindent
+set shiftround " round indent to a multiple of 'shiftwidth'
+
+" Code folding settings
+set foldmethod=syntax " fold based on indent
+set foldlevelstart=99
+set foldnestmax=10 " deepest fold is 10 levels
+set nofoldenable " don't fold by default
+set foldlevel=1
 
 call plug#begin('~/.config/nvim/plugged')
-" General {{{
-
-	filetype plugin on " Enable filetype plugins
-	filetype indent on " IDK
-
-	set colorcolumn=90 " show char limit marker
-
-	set hidden  " allow buffer switching without saving
-	set shell=/bin/zsh\ -i " set terminal environment to zsh
-	set showtabline=2 " always enable tabline
-	set autoread " detect when a file is changed
-
-	set history=1000 " change history to 1000
-	set textwidth=120
-
-	set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-	set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
-	set backspace=indent,eol,start " make backspace behave in a sane manner
-
-	" Searching
-	set ignorecase " case insensitive searching
-	set smartcase " case-sensitive if expresson contains a capital letter
-	set hlsearch " highlight search results
-	set incsearch " set incremental search, like modern browsers
-	set nolazyredraw " don't redraw while executing macros
-  set mouse=a
-
-	set magic " set magic on, for regex
-
-	" error bells
-	set noerrorbells
-	set visualbell
-	set tm=500
-" }}}
-" Apperance {{{
-	syntax on " enable syntax highlighting
-
-	set number " enable line numbers
-	set wrap " turn on line wrapping
-	set wrapmargin=8 " wrap lines when coming within n characters from side
-	set linebreak " set soft wrapping
-	set autoindent " automatically set indent of new line
-	set diffopt+=vertical,iwhite,internal,algorithm:patience,hiddenoff
-	set laststatus=2 " show the status line all the time
-	set so=7 " set 7 lines to the cursors - when moving vertical
-	set showcmd " show incomplete commands
-	set noshowmode " don't show which mode disabled for PowerLine
-	set cmdheight=1 " command bar height
-	set title " set terminal title
-	set showmatch " show matching braces
-	set mat=2 " how many tenths of a second to blink
-	set updatetime=300
-	set signcolumn=yes
-	set shortmess+=c
-	
-	" Tab control
-	set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-	set tabstop=2 " the visible width of tabs
-	set softtabstop=2 " edit as if the tabs are 4 characters wide
-	set expandtab " spaces instead of tabs
-	set shiftwidth=4 " number of spaces to use for indent and unindent
-	set shiftround " round indent to a multiple of 'shiftwidth'
-
-	" code folding settings
-	set foldmethod=syntax " fold based on indent
-	set foldlevelstart=99
-	set foldnestmax=10 " deepest fold is 10 levels
-	set nofoldenable " don't fold by default
-	set foldlevel=1
-	"}}}
-
-	" move to next buffer
-	nmap <silent><leader>l :bnext<CR> 
-	" move to previous buffer
-	nmap <silent><leader>h :bprevious<CR> 
-	" close current buffer and move to previous
-	nmap <silent><leader>bq :bp <BAR> bd #<CR> 
-	
-	" in order to stop using arrows - I made them useless.
-	no <Up> <nop> 
-	no <Down> <nop> 
-	no <Left> <nop> 
-	no <Right> <nop> 
-
-	"switching to below window 
-	no <C-j> <C-w>j| 
-	"switching to above window
-	no <C-k> <C-w>k| 
-	"switching to right window 
-	no <C-l> <C-w>l| 
-	"switching to left window
-	no <C-h> <C-w>h| 
-" }}}
-" Plugins {{{
 
 " XKBSwitch
 " This plugin automatically changes language to specified
@@ -130,6 +93,17 @@ Plug 'jiangmiao/auto-pairs'
 
 " Git plugin
 Plug 'tpope/vim-fugitive'
+
+" Repeat plugin for plugins
+Plug 'tpope/vim-repeat'
+
+" Commentary
+" Plugin for simple commenting
+Plug 'tpope/vim-commentary'
+
+" System-Copy
+" Simple tool for copying and pasting on cp cv
+Plug 'christoomey/vim-system-copy'
 
 " Lightline
 Plug 'itchyny/lightline.vim'
@@ -217,26 +191,45 @@ Plug 'lervag/vimtex'
 set conceallevel=1
 let g:tex_conceal='abdmg'
 let g:tex_flavor = 'latex'
-	" }}}
-	" Q# Language support {{{
-		Plug 'gootorov/q-sharp.vim'
-	" }}}
-  " Codestats {{{
-    Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
-    let g:codestats_api_key = 'SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
-  " }}}
-" }}}
+
+" Q# Language support
+Plug 'gootorov/q-sharp.vim'
+
+" Codestats
+Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
+let g:codestats_api_key = 'SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
+
 call plug#end()
 
 " NOTE: enabling colorscheme must procede after all plugins load.
 colorscheme landscape " set current colorscheme to my favourite
 
-nmap <F5> :call Compile() <CR>
-nmap <F6> :call Compile() <CR> :call Run() <CR>
-
+" Amazing shortcut which I would recommend for everyone
 inoremap jj <Esc>
 " It is russian letter "o"
 inoremap оо <Esc>
+
+" move to next buffer
+nmap <silent><leader>l :bnext<CR> 
+" move to previous buffer
+nmap <silent><leader>h :bprevious<CR> 
+" close current buffer and move to previous
+nmap <silent><leader>bq :bp <BAR> bd #<CR> 
+
+" in order to stop using arrows - I made them useless.
+no <Up> <nop> 
+no <Down> <nop> 
+no <Left> <nop> 
+no <Right> <nop> 
+
+"switching to below window 
+no <C-j> <C-w>j| 
+"switching to above window
+no <C-k> <C-w>k| 
+"switching to right window 
+no <C-l> <C-w>l| 
+"switching to left window
+no <C-h> <C-w>h| 
 
 highlight QuickScopePrimary guifg='#ffff00' gui=underline ctermfg=226 cterm=underline
 highlight QuickScopeSecondary guifg='#ff5f00' gui=underline ctermfg=202 cterm=underline
