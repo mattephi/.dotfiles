@@ -8,7 +8,7 @@ call plug#begin('~/.config/nvim/plugged')
 	filetype plugin on " Enable filetype plugins
 	filetype indent on " IDK
 
-	set colorcolumn=80 " show char limit marker
+	set colorcolumn=90 " show char limit marker
 
 	set hidden  " allow buffer switching without saving
 	set shell=/bin/zsh\ -i " set terminal environment to zsh
@@ -29,6 +29,7 @@ call plug#begin('~/.config/nvim/plugged')
 	set hlsearch " highlight search results
 	set incsearch " set incremental search, like modern browsers
 	set nolazyredraw " don't redraw while executing macros
+  set mouse=a
 
 	set magic " set magic on, for regex
 
@@ -80,11 +81,6 @@ call plug#begin('~/.config/nvim/plugged')
 	nmap <silent><leader>h :bprevious<CR> 
 	" close current buffer and move to previous
 	nmap <silent><leader>bq :bp <BAR> bd #<CR> 
-	" smooth scroll plugin setting
-	no <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR> 
-	no <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR> 
-	no <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR> 
-	no <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR> 
 	
 	" in order to stop using arrows - I made them useless.
 	no <Up> <nop> 
@@ -102,106 +98,94 @@ call plug#begin('~/.config/nvim/plugged')
 	no <C-h> <C-w>h| 
 " }}}
 " Plugins {{{
-" " XKBSwitch {{{
-	" NOTE: This plugin requires additional library installations.
-		Plug 'https://github.com/lyokha/vim-xkbswitch'
-		let g:XkbSwitchEnabled = 1 " enable this plugin
-		let g:XkbSwitchNLayout = 'ABC' " default OSX keyboard layout
-	" }}}
-  " {{{
-    Plug 'https://github.com/lfilho/cosco.vim'
-    nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
-  " }}}
-  " {{{
-    Plug 'luochen1990/rainbow'
-    let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
-  " }}}
-  " Quickscope {{{
-    Plug 'unblevable/quick-scope'
-  " }}}
-	" Automatic Relative Line Numbers {{{
-		Plug 'jeffkreeftmeijer/vim-numbertoggle'
-	" }}}
-	" Auto-Pairs {{{
-		Plug 'jiangmiao/auto-pairs'
-	" }}}
-	" NERDTree {{{
-		Plug 'preservim/nerdtree' " great file explorer
-		Plug 'flw-cn/vim-nerdtree-l-open-h-close' " enables open file on l
-		Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " enables icons and so on
-		" enables NERDTree on <leader>n
-		map <Leader>n :NERDTreeToggle<CR>
-		let NERDTreeShowHidden=1 " show hidden files in directories
-		let NERDTreeMapActivateNode='l' " open node with 'l' key
-		set hidden  " allow buffer switching without saving
-		set showtabline=2 " always enable lightline tabline
 
-	" }}}
-	" Git plugin {{{
-		Plug 'tpope/vim-fugitive'
-	" }}}
-	" Lightline {{{
-		Plug 'itchyny/lightline.vim'
-		let g:lightline = {
-					\ 'colorscheme': 'landscape', 
-					\ }
-		let g:lightline.active = {
-					\ 'left': [ [ 'mode', 'paste', ],
-					\		  [ 'readonly', 'modified' ],
-          \     ['codestats']],
-					\ 'right':  [ [ 'lineinfo' ], 
-					\		    [ 'percent' ], 
-					\		    [ 'currenttime', 'batterystats', ] ]
-					\}
-		let g:lightline.inactive = {
-					\ 'left': [],
-					\ 'right': [],
-					\}
-		let g:lightline.component_function = {
-					\	'bufferinfo': 'lightline#buffer#bufferinfo',
-					\ }
-		let g:lightline.component_expand = {
-					\	'buffercurrent': 'lightline#buffer#buffercurrent',
-					\	'bufferbefore': 'lightline#buffer#bufferbefore',
-					\	'bufferafter': 'lightline#buffer#bufferafter',
-					\ }
-		let g:lightline.component_type = {
-					\	'buffercurrent': 'tabsel',
-					\	'bufferbefore': 'raw',
-					\	'bufferafter': 'raw',
-					\ }
-		let g:lightline.component = {
-					\ 	'codestats': '%{CodeStatsXp()}',
-					\ 	'batterystats': '%{battery#component()}',
-					\ 	'currenttime': '%{strftime("%H:%M:%S")}'
-					\}
-		let g:lightline.tabline = {
-					\ 'left':  [ [ 'bufferinfo' ],
-					\             [ 'separator' ],
-					\             [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
-					\ 'right': [],
-					\ }
-		" Lightline Bufferline {{{
-			Plug 'taohexxx/lightline-buffer'
-			let g:lightline_buffer_enable_devicons = 1
-			let g:lightline_buffer_fname_mod = ':t' " show file extensions
-			let g:lightline_buffer_maxfextlen = 4 " enable file extensions with len of 4
-		" }}}
-	" }}}
-	" Battery statictics {{{
-		Plug 'lambdalisue/battery.vim'
-	" }}}
-	" Devicons {{{
-		Plug 'ryanoasis/vim-devicons'
-		set encoding=utf8
-		let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-	" }}}
-	" Landscape theme {{{
-		Plug 'itchyny/landscape.vim'
-		let g:landscape_highlight_todo = 1 " enable TODO highlighting powered by landscape
-	" }}}
-	" Buffgator {{{
-		Plug 'jeetsukumaran/vim-buffergator'
+" XKBSwitch
+" This plugin automatically changes language to specified
+" while entering normal mode.
+" NOTE: This plugin requires additional library installations.
+Plug 'lyokha/vim-xkbswitch'
+let g:XkbSwitchEnabled = 1 " enable this plugin
+let g:XkbSwitchNLayout = 'ABC' " default OSX keyboard layout
+
+" Cosco
+" This plugin places semicolumn at the end of the line on specified key.
+Plug 'https://github.com/lfilho/cosco.vim'
+nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
+
+" Rainbow
+" This highlights colors brackets and etc with different colors
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
+" Quickscope
+" This plugin highlights unique symbols to help in motions
+" with fF or tT
+Plug 'unblevable/quick-scope'
+
+" Automatic Relative Line Numbers
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+
+" Auto-Pairs
+Plug 'jiangmiao/auto-pairs'
+
+" Git plugin
+Plug 'tpope/vim-fugitive'
+
+" Lightline
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+        \ 'colorscheme': 'landscape', 
+        \ }
+let g:lightline.active = {
+        \ 'left': [ [ 'mode', 'paste', ],
+        \		  [ 'readonly', 'modified' ],
+        \     ['codestats']],
+        \ 'right':  [ [ 'lineinfo' ], 
+        \		    [ 'percent' ], 
+        \		    [ 'currenttime' ] ]
+        \}
+let g:lightline.inactive = {
+        \ 'left': [],
+        \ 'right': [],
+        \}
+let g:lightline.component_function = {
+        \	'bufferinfo': 'lightline#buffer#bufferinfo',
+        \ }
+let g:lightline.component_expand = {
+        \	'buffercurrent': 'lightline#buffer#buffercurrent',
+        \	'bufferbefore': 'lightline#buffer#bufferbefore',
+        \	'bufferafter': 'lightline#buffer#bufferafter',
+        \ }
+let g:lightline.component_type = {
+        \	'buffercurrent': 'tabsel',
+        \	'bufferbefore': 'raw',
+        \	'bufferafter': 'raw',
+        \ }
+let g:lightline.component = {
+        \ 	'codestats': '%{CodeStatsXp()}',
+        \ 	'currenttime': '%{strftime("%H:%M:%S")}'
+        \}
+let g:lightline.tabline = {
+        \ 'left':  [ [ 'bufferinfo' ],
+        \             [ 'separator' ],
+        \             [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
+        \ 'right': [],
+        \ }
+
+" Lightline Bufferline
+Plug 'taohexxx/lightline-buffer'
+let g:lightline_buffer_enable_devicons = 1
+let g:lightline_buffer_fname_mod = ':t' " show file extensions
+let g:lightline_buffer_maxfextlen = 4 " enable file extensions with len of 4
+
+" Devicons
+Plug 'ryanoasis/vim-devicons'
+set encoding=utf8
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+
+" Landscape theme
+Plug 'itchyny/landscape.vim'
+let g:landscape_highlight_todo = 1 " enable TODO highlighting powered by landscape
 	" }}}
 	" CtrlP {{{
 		Plug 'kien/ctrlp.vim'
@@ -211,17 +195,17 @@ call plug#begin('~/.config/nvim/plugged')
 	" }}}
 	" Smooth-Scroll {{{
 		Plug 'terryma/vim-smooth-scroll'
+    " smooth scroll plugin setting
+    no <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR> 
+    no <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR> 
+    no <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR> 
+    no <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR> 
 	" }}}
 	" Vim surround {{{
 		Plug 'tpope/vim-surround'
 	" }}}
 	" ALE {{{
 		Plug 'w0rp/ale'
-    Plug 'harenome/vim-mipssyntax'
-    
-	" }}}
-	" Dart {{{
-		Plug 'dart-lang/dart-vim-plugin'
 	" }}}
 	" Vimtex {{{
 		Plug 'lervag/vimtex'
@@ -246,30 +230,9 @@ nmap <F5> :call Compile() <CR>
 nmap <F6> :call Compile() <CR> :call Run() <CR>
 
 inoremap jj <Esc>
+" It is russian letter "o"
 inoremap оо <Esc>
-
-" TODO: rewrite correctly and expand functionality one day.
-fu! Compile()
-	let ex = expand("%:e")
-	if (ex == "cpp")
-		:!compilecpp %
-	elseif (ex == "tex")
-		echo "TEX"
-	endif
-endfu
-
-" TODO: rewrite correctly and expand functionality one day.
-fu! Run()
-	let ex = expand("%:e")
-	if (ex == "cpp")
-		:!./out
-	endif
-	if (ex == "py")
-		:!python3 %
-	endif
-endfu
 
 highlight QuickScopePrimary guifg='#ffff00' gui=underline ctermfg=226 cterm=underline
 highlight QuickScopeSecondary guifg='#ff5f00' gui=underline ctermfg=202 cterm=underline
 
-autocmd BufNewFile,BufRead *.asm set syntax=mips
