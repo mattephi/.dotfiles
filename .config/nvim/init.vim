@@ -179,39 +179,44 @@ let g:lightline_buffer_fname_mod = ':t' " show file extensions
 let g:lightline_buffer_maxfextlen = 4 " enable file extensions with len of 4
 
 " Devicons
+" Adds cool glyphs to plugins
 Plug 'ryanoasis/vim-devicons'
 set encoding=utf8
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 
 " Landscape theme
 Plug 'itchyny/landscape.vim'
-let g:landscape_highlight_todo = 1 " enable TODO highlighting powered by landscape
-	" }}}
-	" CtrlP {{{
-		Plug 'kien/ctrlp.vim'
-		let g:ctrlp_map = '<c-p>' " command to call CtrlP
-		let g:ctrlp_cmd = 'CtrlP' " another command to enable map
-		set wildignore+=*/tmp/*,*.so,*.swp,*.zip " ignore this files with wildignore
-	" }}}
-	" Smooth-Scroll {{{
-		Plug 'terryma/vim-smooth-scroll'
-    " smooth scroll plugin setting
-    no <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR> 
-    no <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR> 
-    no <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR> 
-    no <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR> 
-	" }}}
-	" Vim surround {{{
-		Plug 'tpope/vim-surround'
-	" }}}
-	" ALE {{{
-		Plug 'w0rp/ale'
-	" }}}
-	" Vimtex {{{
-		Plug 'lervag/vimtex'
-		set conceallevel=1
-		let g:tex_conceal='abdmg'
-    let g:tex_flavor = 'latex'
+let g:landscape_highlight_todo = 1 " enable TODO highlighting
+
+" CtrlP
+" Amazing fuzzy file/buffer/etc finder
+Plug 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-p>' " command to call CtrlP
+let g:ctrlp_cmd = 'CtrlP' " another command to enable map
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip " ignore this files with wildignore
+
+" Smooth-Scroll
+" Plugin for smooth and comfortable scrolling
+Plug 'terryma/vim-smooth-scroll'
+no <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR> 
+no <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR> 
+no <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR> 
+no <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR> 
+
+" Vim surround
+" Plugin for fast and easy surroundings
+Plug 'tpope/vim-surround'
+
+" ALE
+" Plugin for code analysis and error displays
+Plug 'w0rp/ale'
+
+" Vimtex
+" Plugin for vim TEX integration
+Plug 'lervag/vimtex'
+set conceallevel=1
+let g:tex_conceal='abdmg'
+let g:tex_flavor = 'latex'
 	" }}}
 	" Q# Language support {{{
 		Plug 'gootorov/q-sharp.vim'
