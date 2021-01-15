@@ -165,8 +165,9 @@ let g:landscape_highlight_todo = 1 " enable TODO highlighting
 " CtrlP
 " Amazing fuzzy file/buffer/etc finder
 Plug 'kien/ctrlp.vim'
-let g:ctrlp_map = '<c-p>' " command to call CtrlP
+let g:ctrlp_map = '<C-p>' " command to call CtrlP
 let g:ctrlp_cmd = 'CtrlP' " another command to enable map
+no <C-[> :CtrlPBuffer<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip " ignore this files with wildignore
 
 " Smooth-Scroll
