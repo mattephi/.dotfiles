@@ -871,7 +871,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.12982442010309278</real>
+			<real>0.064875966494845352</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -901,7 +901,7 @@
 	<key>OpenBookmark</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
-	<true/>
+	<false/>
 	<key>PerPaneBackgroundImage</key>
 	<true/>
 	<key>PointerActions</key>
