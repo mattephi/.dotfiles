@@ -45,11 +45,12 @@ This function should only modify configuration layer settings."
      git
      helm
      themes-megapack
-     lsp
+     ;; lsp
      tmux
      markdown
      multiple-cursors
      c-c++
+     ;; (c-c++ :variables c-c++-backend 'lsp-clangd)
      dap
      ;; org
      ;; (shell :variables
@@ -515,12 +516,6 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq-default dotspacemacs-line-numbers 'relative)
   (setq-default dotspacemacs-frame-title-format "%S/%b")
-  (setq lsp-clients-clangd-executable "/usr/local/Cellar/llvm/11.0.1/bin/clangd")
-  (setq lsp-clients-clangd-args "--std=c++17")
-  (setq-default dotspacemacs-configuration-layers
-                '((c-c++ :variables c-c++-backend 'lsp-clangd)))
-  (setq-default dotspacemacs-configuration-layers
-                '((c-c++ :variables c-c++-enable-clang-support t)))
   (setq code-stats-token "SFMyNTY.YlRoa2IzUndhV1U9IyNNVEk0TVRFPQ.kPjdUu4n48XJYGPLEFO4GyTjguLUTD9u-QkrfUzhqlw")
   (setq projectile-project-search-path '("~/projects/"))
   )
@@ -544,11 +539,6 @@ before packages are loaded."
   (add-hook 'prog-mode-hook #'code-stats-mode)
   (run-with-idle-timer 30 t #'code-stats-sync)
   (add-hook 'kill-emacs-hook (lambda () (code-stats-sync :wait)))
-  (require 'flycheck)
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-args "-std=c++17")))
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-args "-std=c++17")))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
