@@ -517,6 +517,12 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq-default dotspacemacs-line-numbers 'relative)
   (setq-default dotspacemacs-frame-title-format "%S/%b")
+  (setq-default dotspacemacs-configuration-layers
+                '((clojure :variables clojure-enable-fancify-symbols t)))
+  (setq-default dotspacemacs-configuration-layers
+                '((clojure :variables clojure-backend 'cider)))
+  (setq-default dotspacemacs-configuration-layers
+                '((clojure :variables clojure-enable-linters 'clj-kondo)))
   (setq code-stats-token "SFMyNTY.YlRoa2IzUndhV1U9IyNNVEk0TVRFPQ.kPjdUu4n48XJYGPLEFO4GyTjguLUTD9u-QkrfUzhqlw")
   (setq projectile-project-search-path '("~/projects/"))
   )
