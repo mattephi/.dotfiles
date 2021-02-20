@@ -33,6 +33,7 @@ export EDITOR=nvim
 export QUARTUS_ROOTDIR="/opt/quartus20/quartus"
 
 alias ..="cd .."
+alias psql="/Library/PostgreSQL/13/scripts/runpsql.sh; exit"
 alias config='/usr/bin/git --git-dir=$HOME/.m8cfg/ --work-tree=$HOME'
 alias configignore='config config --local status.showUntrackedFiles no'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
