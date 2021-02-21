@@ -16,6 +16,7 @@ export PATH=$PATH:$HOME/.emacs.d/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.ghcup/ghc/8.10.3/bin
 export PATH=$PATH:/usr/local/sbin
+export CLASSPATH=$CLASSPATH:/$HOME/jpath
 
 export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 
