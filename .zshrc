@@ -5,6 +5,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME='arrow'
 
+export PGUSER=postgres
+export PGHOST=localhost
+export PGPORT=5432
 export UPDATE_ZSH_DAYS=2
 export PATH=$PATH:$HOME/chrd # Chromedriver
 export PATH=$PATH:$HOME/anaconda3/bin # Anaconda binaries
