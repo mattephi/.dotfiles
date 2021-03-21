@@ -33,6 +33,7 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(yaml
+     latex
      javascript
      clojure
      html
@@ -527,6 +528,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
                 '((clojure :variables clojure-backend 'cider)))
   (setq-default dotspacemacs-configuration-layers
                 '((clojure :variables clojure-enable-linters 'clj-kondo)))
+  (setq-default dotspacemacs-configuration-layers
+                '((latex :variables latex-backend 'lsp)))
+  (setq-default dotspacemacs-configuration-layers
+                '((latex :variables latex-refresh-preview t)))
   (setq code-stats-token "SFMyNTY.YlRoa2IzUndhV1U9IyNNVEk0TVRFPQ.kPjdUu4n48XJYGPLEFO4GyTjguLUTD9u-QkrfUzhqlw")
   (setq projectile-project-search-path '("~/projects/"))
   (setq centaur-tabs-set-icons t)
