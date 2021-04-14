@@ -9,7 +9,7 @@ This function should only modify configuration layer settings."
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
-   dotspacemacs-distribution 'spacemacs-base
+   dotspacemacs-distribution 'spacemacs
 
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
@@ -43,7 +43,6 @@ This function should only modify configuration layer settings."
      emacs-lisp
      ;; git
      helm
-     osx
      ;; lsp
      ;; markdown
      multiple-cursors
@@ -52,7 +51,7 @@ This function should only modify configuration layer settings."
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking 
+     ;; syntax-checking
      ;; version-control
      treemacs)
 
@@ -541,22 +540,3 @@ before packages are loaded.")
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(evil-escape treemacs-projectile treemacs-icons-dired treemacs-evil treemacs cfrs ht pfuture ace-window posframe overseer f nameless macrostep helm-xref helm-themes helm-swoop helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx flx helm-descbinds helm-ag flycheck-package package-lint flycheck flycheck-elsa evil-mc emr iedit clang-format projectile paredit list-utils s pkg-info epl elisp-slime-nav dash auto-compile packed ace-jump-helm-line helm avy helm-core popup which-key use-package pcre2el hydra lv hybrid-mode evil goto-chg dotenv-mode diminish bind-map bind-key async)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
