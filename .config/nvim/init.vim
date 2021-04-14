@@ -206,9 +206,9 @@ call plug#end()
 colorscheme landscape " set current colorscheme to my favourite
 
 " Amazing shortcut which I would recommend for everyone
-inoremap jj <Esc>
+inoremap fd <Esc>
 " It is russian letter "o"
-inoremap оо <Esc>
+inoremap ав <Esc>
 
 " move to next buffer
 nmap <silent><leader>l :bnext<CR> 
