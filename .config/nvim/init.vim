@@ -220,6 +220,9 @@ nmap <silent><leader>h :bprevious<CR>
 " close current buffer and move to previous
 nmap <silent><leader>bq :bp <BAR> bd #<CR> 
 
+"
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
 " in order to stop using arrows - I made them useless.
 no <Up> <nop> 
 no <Down> <nop> 
