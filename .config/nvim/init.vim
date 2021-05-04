@@ -186,8 +186,9 @@ Plug 'tpope/vim-surround'
 " Plugin for code analysis and error displays
 Plug 'w0rp/ale'
 let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++']}
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++2a'
-let g:ale_cpp_clang_options = '-Wall -O2 -std=c++2a'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++20'
+let g:ale_cpp_clang_options = '-Wall -O2 -std=c++20'
+let g:ale_cpp_clangcheck_options = '-Wall -std=c++20 -x c++'
 
 " Vimtex
 " Plugin for vim TEX integration
