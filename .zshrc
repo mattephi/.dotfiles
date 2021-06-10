@@ -18,7 +18,7 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/platform-tools # ADB and Fastboot tools
 export PATH=$PATH:$HOME/.emacs.d/bin
 export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/.ghcup/ghc/8.10.3/bin
+export PATH=$PATH:$HOME/.ghcup/ghc/8.10.5/bin
 export PATH=$PATH:/usr/local/sbin
 export CLASSPATH=$CLASSPATH:/$HOME/jpath
 
