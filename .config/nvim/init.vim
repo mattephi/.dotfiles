@@ -43,7 +43,6 @@ set shiftround            " Round indent to multiple of 'shiftwidth'
 
 " Plugins initialization and configuration
 lua require('plugins')
-lua require('telescope').extensions.media_files.media_files()
 " Autocompilation on plugins configuration change
 autocmd BufWritePost plugins.lua PackerCompile
 
