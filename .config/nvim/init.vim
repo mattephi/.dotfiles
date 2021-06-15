@@ -1,4 +1,4 @@
-" Author: m8.pie
+" Author: m8.pi
 " Website: m8dotpie.co.uk
 
 filetype plugin indent on " Enable filetype dependent features
@@ -32,3 +32,29 @@ set showmatch             " Show matching braces
 set matchtime=2           " 2/10 seconds to blink matching brace
 set updatetime=200        " This time of inactivity updates swap file (ms)
 set shortmess+=c          " Hide prompts from ins-completion-menu
+
+" Tabs configuration
+set smarttab              " Respect 'tabstop' and others on tabbing
+set tabstop=8             " Visible width of tabs
+set softtabstop=4         " Inserted tabs length
+set expandtab             " Spaces instead of tabs
+set shiftwidth=4          " Indentation width
+set shiftround            " Round indent to multiple of 'shiftwidth'
+
+" Plugins initialization and configuration
+lua require('plugins')
+
+" Custom hotkeys configuration
+" Spacemacs like Esc shortcuts
+inoremap fd <Esc>
+inoremap ав <Esc>
+" Disabling arrow keys
+nnoremap <Up> <nop>
+nnoremap <Down> <nop>
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+" Telescope hotkeys
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
