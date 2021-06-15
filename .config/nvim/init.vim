@@ -1,10 +1,10 @@
-" Author: m8.pi
+" Author: m8.pie
 " Website: m8dotpie.co.uk
 
 filetype plugin indent on " Enable filetype dependent features
 
 " Basic configuration
-set colorcolumn=90        " Char limit marker at 91th column
+set colorcolumn=90        " Char limit marker at 90th column
 set textwidth=90          " Line breaks at char limit
 set hidden                " Allow buffer switching without saving
 set autoread              " Autoupdate changed files
@@ -25,8 +25,8 @@ set hlsearch              " Search highlighting
 set noerrorbells          " No error bells
 set visualbell            " Make bell behave as screen flash
 set autoindent            " Autoindent new lines
-set laststatus=1          " Status line enabled for multiple windows
 set scrolloff=5           " Number of lines above and below the cursor
+set laststatus=2          " Status line enabled for multiple windows
 set title                 " Change terminal title
 set showmatch             " Show matching braces
 set matchtime=2           " 2/10 seconds to blink matching brace
@@ -45,6 +45,9 @@ set shiftround            " Round indent to multiple of 'shiftwidth'
 lua require('plugins')
 " Autocompilation on plugins configuration change
 autocmd BufWritePost plugins.lua PackerCompile
+
+" Codestats configuration
+let g:codestats_api_key='SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
 
 " Custom hotkeys configuration
 " Spacemacs like Esc shortcuts
