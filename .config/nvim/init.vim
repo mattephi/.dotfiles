@@ -49,6 +49,9 @@ autocmd BufWritePost plugins.lua PackerCompile
 " Codestats configuration
 let g:codestats_api_key='SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
 
+" XkbSwitch needs to be turned on
+let g:XkbSwitchEnabled = 1
+
 " Custom hotkeys configuration
 " Spacemacs like Esc shortcuts
 inoremap fd <Esc>
