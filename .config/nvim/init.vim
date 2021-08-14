@@ -4,7 +4,7 @@
 filetype plugin indent on " Enable filetype dependent features
 
 " Basic configuration
-set guifont=Hack\ Nerd\ Font\ Mono:h15
+set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h15
 set colorcolumn=90        " Char limit marker at 90th column
 set textwidth=90          " Line breaks at char limit
 set hidden                " Allow buffer switching without saving
@@ -91,3 +91,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 let neovide_remember_window_size=v:true
 let g:neovide_refresh_rate=75
 let g:neovide_cursor_antialiasing=v:true
+let g:neovide_input_use_logo=v:true
+let g:neovide_window_floating_opacity=1
+let g:neovide_window_floating_blur=0
