@@ -4,6 +4,7 @@
 filetype plugin indent on " Enable filetype dependent features
 
 " Basic configuration
+set guifont=Hack\ Nerd\ Font\ Mono:h15
 set colorcolumn=90        " Char limit marker at 90th column
 set textwidth=90          " Line breaks at char limit
 set hidden                " Allow buffer switching without saving
@@ -27,7 +28,6 @@ set visualbell            " Make bell behave as screen flash
 set autoindent            " Autoindent new lines
 set scrolloff=5           " Number of lines above and below the cursor
 set laststatus=2          " Status line enabled for multiple windows
-set title                 " Change terminal title
 set showmatch             " Show matching braces
 set matchtime=2           " 2/10 seconds to blink matching brace
 set updatetime=200        " This time of inactivity updates swap file (ms)
@@ -46,11 +46,31 @@ lua require('plugins')
 " Autocompilation on plugins configuration change
 autocmd BufWritePost plugins.lua PackerCompile
 
+let g:deoplete#enable_at_startup = 1
+
+if executable('clangd')
+    augroup lsp_clangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'clangd',
+                    \ 'cmd': {server_info->['clangd']},
+                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                    \ })
+        autocmd FileType c setlocal omnifunc=lsp#complete
+        autocmd FileType cpp setlocal omnifunc=lsp#complete
+        autocmd FileType objc setlocal omnifunc=lsp#complete
+        autocmd FileType objcpp setlocal omnifunc=lsp#complete
+    augroup end
+endif
+
 " Codestats configuration
 let g:codestats_api_key='SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
 
 " XkbSwitch needs to be turned on
 let g:XkbSwitchEnabled = 1
+
+" Coloscheme setting
+colorscheme material
 
 " Custom hotkeys configuration
 " Spacemacs like Esc shortcuts
@@ -66,3 +86,8 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Neovide configuration
+let neovide_remember_window_size=v:true
+let g:neovide_refresh_rate=75
+let g:neovide_cursor_antialiasing=v:true
