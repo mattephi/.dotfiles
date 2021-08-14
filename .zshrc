@@ -6,24 +6,12 @@ DISABLE_AUTO_UPDATE="true"
 
 ZSH_THEME='arrow'
 
-export PGUSER=postgres
-export PGHOST=localhost
-export PGPORT=5432
-export UPDATE_ZSH_DAYS=2
-export PATH=$PATH:$HOME/chrd # Chromedriver
+export UPDATE_ZSH_DAYS=7
 export PATH=$PATH:$HOME/anaconda3/bin # Anaconda binaries
-export PATH=$PATH:$HOME/flutter/bin # Flutter binaries
-export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/platform-tools # ADB and Fastboot tools
-export PATH=$PATH:$HOME/.emacs.d/bin
 export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/.ghcup/ghc/8.10.5/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/tools/cmake/bin
-export CLASSPATH=$CLASSPATH:/$HOME/jpath
-
-export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 
 ENABLE_CORRECTION="true"
 
@@ -36,7 +24,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=nvim
-export QUARTUS_ROOTDIR="/opt/quartus20/quartus"
 
 alias ..="cd .."
 alias psql="/Library/PostgreSQL/13/scripts/runpsql.sh; exit"
@@ -49,10 +36,6 @@ function configBackup() {
 	cd
 	config commit -a -m "Autopush"
 	config push -u origin master
-}
-
-function ccpp() {
-	clang++ -std=c++17 -O2 -g -o out -D M8_LOCAL -fsanitize=address -fsanitize=bounds -fno-sanitize-recover=all -fstack-protector -fsanitize=undefined $1
 }
 
 # >>> conda initialize >>>

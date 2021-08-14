@@ -37,4 +37,14 @@ return require('packer').startup(function()
     use 'frazrepo/vim-rainbow'
     -- Simplify word jumping
     use 'unblevable/quick-scope'
+    -- Auto surrounding
+    use 'jiangmiao/auto-pairs'
+    use {
+        'hoob3rt/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
+    -- Codestats tracking plugin
+    use 'https://gitlab.com/code-stats/code-stats-vim'
+    -- Auto layout switcher
+    use 'lyokha/vim-xkbswitch'
 end)

@@ -1,4 +1,3 @@
-" Author: m8.pie
 " Website: m8dotpie.co.uk
 
 filetype plugin indent on " Enable filetype dependent features
@@ -32,6 +31,7 @@ set showmatch             " Show matching braces
 set matchtime=2           " 2/10 seconds to blink matching brace
 set updatetime=200        " This time of inactivity updates swap file (ms)
 set shortmess+=c          " Hide prompts from ins-completion-menu
+set encoding=utf8
 
 " Tabs configuration
 set smarttab              " Respect 'tabstop' and others on tabbing
@@ -42,7 +42,11 @@ set shiftwidth=4          " Indentation width
 set shiftround            " Round indent to multiple of 'shiftwidth'
 
 " Plugins initialization and configuration
-lua require('plugins')
+lua << EOF
+require('plugins')
+require('plugins-cfg')
+EOF
+
 " Autocompilation on plugins configuration change
 autocmd BufWritePost plugins.lua PackerCompile
 
