@@ -74,6 +74,9 @@ let g:rainbow_active = 1
 
 " Coloscheme setting
 colorscheme material
+if (has('termguicolors'))
+  set termguicolors
+endif
 
 " Custom hotkeys configuration
 " Spacemacs like Esc shortcuts
