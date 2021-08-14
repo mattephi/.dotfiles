@@ -69,6 +69,9 @@ let g:codestats_api_key='SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiC
 " XkbSwitch needs to be turned on
 let g:XkbSwitchEnabled = 1
 
+" Rainbow Parenthesis needs to be turned on
+let g:rainbow_active = 1
+
 " Coloscheme setting
 colorscheme material
 
