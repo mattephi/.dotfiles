@@ -41,11 +41,35 @@ set expandtab             " Spaces instead of tabs
 set shiftwidth=4          " Indentation width
 set shiftround            " Round indent to multiple of 'shiftwidth'
 
+if (has('termguicolors'))
+  set termguicolors
+endif
+
 " Plugins initialization and configuration
 lua << EOF
-require('plugins')
-require('plugins-cfg')
+require'plugins'
+require'plugins-cfg'
+require'colorizer'.setup{}
+require'neoscroll'.setup{
+-- All these keys will be mapped to their corresponding default scrolling animation
+    mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+    '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+    hide_cursor = true,          -- Hide cursor while scrolling
+    stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+    use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+    respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+    easing_function = nil,        -- Default easing function
+    pre_hook = nil,              -- Function to run before the scrolling animation starts
+    post_hook = nil,              -- Function to run after the scrolling animation ends
+}
 EOF
+
+" Run colorizer on start
+autocmd VimEnter * ColorizerToggle
+
+" Indentation guides colors
+let g:indent_blankline_char_highlight_list = ['Directory', 'ModeMsg', 'WarningMsg']
 
 " Autocompilation on plugins configuration change
 autocmd BufWritePost plugins.lua PackerCompile
@@ -78,9 +102,6 @@ let g:rainbow_active = 1
 
 " Coloscheme setting
 colorscheme material
-if (has('termguicolors'))
-  set termguicolors
-endif
 
 " Custom hotkeys configuration
 " Spacemacs like Esc shortcuts

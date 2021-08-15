@@ -1,4 +1,3 @@
-local execute = vim.api.nvim_command
 local fn = vim.fn
 
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -30,11 +29,11 @@ return require('packer').startup(function()
            requires = { {'nvim-lua/plenary.nvim'} }
     }
     -- Material theme
-    use 'm8dotpie/material.vim'
+    use 'marko-cerovac/material.nvim'
     -- Commenting shortcuts
     use 'tpope/vim-commentary'
     -- Colorized parenthesis
-    use 'frazrepo/vim-rainbow'
+    use 'p00f/nvim-ts-rainbow'
     -- Simplify word jumping
     use 'unblevable/quick-scope'
     -- Auto surrounding
@@ -47,4 +46,17 @@ return require('packer').startup(function()
     use 'https://gitlab.com/code-stats/code-stats-vim'
     -- Auto layout switcher
     use 'lyokha/vim-xkbswitch'
+    -- Colorizer
+    use 'norcalli/nvim-colorizer.lua'
+    -- Indent guides
+    use 'lukas-reineke/indent-blankline.nvim'
+    -- Smooth Scrolling (while it is unstable in neovide)
+    use 'karb94/neoscroll.nvim'
+    -- Syntax Tree and highlighting
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+    -- NeoVim dashboard
+    use 'glepnir/dashboard-nvim'
 end)
