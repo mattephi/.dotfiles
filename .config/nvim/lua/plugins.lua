@@ -59,4 +59,8 @@ return require('packer').startup(function()
     }
     -- NeoVim dashboard
     use 'glepnir/dashboard-nvim'
+    -- NerdTree files manager
+    use 'preservim/nerdtree'
+    -- NerdTree visual operations
+    use 'PhilRunninger/nerdtree-visual-selection'
 end)
