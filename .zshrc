@@ -57,3 +57,5 @@ unset __conda_setup
 #[ -f "/Users/m8dotpie/.ghcup/env" ] && source "/Users/m8dotpie/.ghcup/env" # ghcup-env
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 [ -f "/Users/m8dotpie/.ghcup/env" ] && source "/Users/m8dotpie/.ghcup/env" # ghcup-env
+
+eval $(thefuck --alias)
