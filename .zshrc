@@ -14,6 +14,7 @@ export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/tools/cmake/bin
 export PATH=$PATH:$HOME/tizen-studio/tools/ide/bin
 export PATH=$PATH:$HOME/platform-tools
+export PATH:$PATH:$HOME/tizen-studio/tools
 
 ENABLE_CORRECTION="true"
 
