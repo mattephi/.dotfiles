@@ -12,6 +12,7 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/tools/cmake/bin
+export PATH=$PATH:$HOME/tizen-studio/tools/ide/bin
 
 ENABLE_CORRECTION="true"
 
