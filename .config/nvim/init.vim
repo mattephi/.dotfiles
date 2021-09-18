@@ -84,10 +84,17 @@ if executable('clangd')
                     \ 'cmd': {server_info->['clangd']},
                     \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
                     \ })
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'typescript-language-server',
+                    \ 'cmd': {server_info->['typescript-language-server --stdio']},
+                    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+                    \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
+                    \ })
         autocmd FileType c setlocal omnifunc=lsp#complete
         autocmd FileType cpp setlocal omnifunc=lsp#complete
         autocmd FileType objc setlocal omnifunc=lsp#complete
         autocmd FileType objcpp setlocal omnifunc=lsp#complete
+        autocmd FileType ts setlocal omnifunc=lsp#complete
     augroup end
 endif
 
@@ -99,6 +106,12 @@ let g:XkbSwitchEnabled = 1
 
 " Rainbow Parenthesis needs to be turned on
 let g:rainbow_active = 1
+
+" Git blamer needs to be on
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+let g:blamer_show_in_visual_modes = 0
+let g:blamer_show_in_insert_modes = 0
 
 " Coloscheme setting
 colorscheme material
@@ -112,8 +125,6 @@ nnoremap <Up> <nop>
 nnoremap <Down> <nop>
 nnoremap <Left> <nop>
 nnoremap <Right> <nop>
-" Reconfigure command key
-nnoremap <SPACE> :
 " Telescope hotkeys
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
