@@ -65,4 +65,11 @@ return require('packer').startup(function()
     use 'PhilRunninger/nerdtree-visual-selection'
     -- Git Blamer
     use 'APZelos/blamer.nvim'
+    -- Git Highlighter
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        }
+    }
 end)

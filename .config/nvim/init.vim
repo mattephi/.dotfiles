@@ -86,7 +86,7 @@ if executable('clangd')
                     \ })
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'typescript-language-server',
-                    \ 'cmd': {server_info->['typescript-language-server --stdio']},
+                    \ 'cmd': {server_info->['typescript-language-server', '--stdio']},
                     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
                     \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
                     \ })
