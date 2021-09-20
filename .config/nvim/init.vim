@@ -65,6 +65,8 @@ require'neoscroll'.setup{
 }
 EOF
 
+let g:gitblame_highlight_group='Question'
+
 " Run colorizer on start
 autocmd VimEnter * ColorizerToggle
 
@@ -106,12 +108,6 @@ let g:XkbSwitchEnabled = 1
 
 " Rainbow Parenthesis needs to be turned on
 let g:rainbow_active = 1
-
-" Git blamer needs to be on
-let g:blamer_enabled = 1
-let g:blamer_delay = 500
-let g:blamer_show_in_visual_modes = 0
-let g:blamer_show_in_insert_modes = 0
 
 " Coloscheme setting
 colorscheme material

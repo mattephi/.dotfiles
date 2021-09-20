@@ -39,7 +39,7 @@ return require('packer').startup(function()
     -- Auto surrounding
     use 'jiangmiao/auto-pairs'
     use {
-        'hoob3rt/lualine.nvim',
+        'shadmansaleh/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
     -- Codestats tracking plugin
@@ -58,18 +58,15 @@ return require('packer').startup(function()
         run = ':TSUpdate'
     }
     -- NeoVim dashboard
-    use 'glepnir/dashboard-nvim'
+    -- use 'glepnir/dashboard-nvim'
     -- NerdTree files manager
     use 'preservim/nerdtree'
     -- NerdTree visual operations
     use 'PhilRunninger/nerdtree-visual-selection'
     -- Git Blamer
-    use 'APZelos/blamer.nvim'
-    -- Git Highlighter
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim'
-        }
-    }
+    use 'f-person/git-blame.nvim'
+    -- Registers Peekup
+    use 'gennaro-tedesco/nvim-peekup'
+    -- LSP Statusline
+    use 'nvim-lua/lsp-status.nvim'
 end)
