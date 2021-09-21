@@ -16,9 +16,6 @@ return require('packer').startup(function()
     use 'prabirshrestha/vim-lsp'
     -- LSP Engine
     use 'neovim/nvim-lsp'
-    -- Deoplete suggestions
-    use 'Shougo/deoplete.nvim'
-    use 'lighttiger2505/deoplete-vim-lsp'
     -- Functions I don't want to write twice
     use 'nvim-lua/plenary.nvim'
     -- Some fancy icons
@@ -69,4 +66,10 @@ return require('packer').startup(function()
     use 'gennaro-tedesco/nvim-peekup'
     -- LSP Statusline
     use 'nvim-lua/lsp-status.nvim'
+    -- Deno JS/TS env
+    use 'vim-denops/denops.vim'
+    -- DDN Completion
+    use 'Shougo/ddc.vim'
+    -- DDN Nvim LSP Client
+    use 'Shougo/ddc-nvim-lsp'
 end)
