@@ -15,6 +15,7 @@ export PATH=$PATH:$HOME/tools/cmake/bin
 export PATH=$PATH:$HOME/tizen-studio/tools/ide/bin
 export PATH=$PATH:$HOME/platform-tools
 export PATH=$PATH:$HOME/tizen-studio/tools
+export NEXTWORD_DATA_PATH=$HOME/.nextword_data
 
 ENABLE_CORRECTION="true"
 

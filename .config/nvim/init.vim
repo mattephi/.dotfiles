@@ -76,7 +76,14 @@ let g:indent_blankline_char_highlight_list = ['Directory', 'ModeMsg', 'WarningMs
 " Autocompilation on plugins configuration change
 autocmd BufWritePost plugins.lua PackerCompile
 
-let g:deoplete#enable_at_startup = 1
+" DDC Engine configuration
+call ddc#custom#patch_global('sources', ['around'])
+call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank']},
+      \ })
+call ddc#enable()
 
 if executable('clangd')
     augroup lsp_clangd

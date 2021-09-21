@@ -72,4 +72,8 @@ return require('packer').startup(function()
     use 'Shougo/ddc.vim'
     -- DDN Nvim LSP Client
     use 'Shougo/ddc-nvim-lsp'
+    -- DDC Around Source
+    use 'Shougo/ddc-around'
+    use 'Shougo/ddc-matcher_head'
+    use 'Shougo/ddc-sorter_rank'
 end)
