@@ -76,4 +76,5 @@ return require('packer').startup(function()
     use 'Shougo/ddc-around'
     use 'Shougo/ddc-matcher_head'
     use 'Shougo/ddc-sorter_rank'
+    use 'Shougo/ddc-nextword'
 end)
