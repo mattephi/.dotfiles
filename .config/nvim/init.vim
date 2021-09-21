@@ -48,6 +48,8 @@ endif
 " Plugins initialization and configuration
 lua << EOF
 require'plugins'
+require'lspconfig'.clangd.setup{}
+require'lspconfig'.tsserver.setup{}
 require'plugins-cfg'
 require'colorizer'.setup{}
 require'neoscroll'.setup{
@@ -75,37 +77,44 @@ let g:indent_blankline_char_highlight_list = ['Directory', 'ModeMsg', 'WarningMs
 
 " Autocompilation on plugins configuration change
 autocmd BufWritePost plugins.lua PackerCompile
-
+"
 " DDC Engine configuration
-call ddc#custom#patch_global('sources', ['around'])
+call ddc#custom#patch_global('sources', ['around', 'nvimlsp'])
 call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank']},
-      \ })
+            \ 'around': {'mark': 'A'},
+            \ 'nvimlsp': {'mark': 'lsp'},
+            \ '_': {
+            \   'matchers': ['matcher_head'],
+            \   'sorters': ['sorter_rank']},
+            \ })
 call ddc#enable()
+call ddc_nvim_lsp_doc#enable()
 
-if executable('clangd')
-    augroup lsp_clangd
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'clangd',
-                    \ 'cmd': {server_info->['clangd']},
-                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-                    \ })
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'typescript-language-server',
-                    \ 'cmd': {server_info->['typescript-language-server', '--stdio']},
-                    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-                    \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
-                    \ })
-        autocmd FileType c setlocal omnifunc=lsp#complete
-        autocmd FileType cpp setlocal omnifunc=lsp#complete
-        autocmd FileType objc setlocal omnifunc=lsp#complete
-        autocmd FileType objcpp setlocal omnifunc=lsp#complete
-        autocmd FileType ts setlocal omnifunc=lsp#complete
-    augroup end
-endif
+" Redundant configuration of clangd and LSP server
+" Not sure if I will ever need it again, but let's 
+" keep it for a while
+"
+" if executable('clangd')
+"     augroup lsp_clangd
+"         autocmd!
+"         autocmd User lsp_setup call lsp#register_server({
+"                     \ 'name': 'clangd',
+"                     \ 'cmd': {server_info->['clangd']},
+"                     \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+"                     \ })
+"         autocmd User lsp_setup call lsp#register_server({
+"                     \ 'name': 'typescript-language-server',
+"                     \ 'cmd': {server_info->['typescript-language-server', '--stdio']},
+"                     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+"                     \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
+"                     \ })
+"         autocmd FileType c setlocal omnifunc=lsp#complete
+"         autocmd FileType cpp setlocal omnifunc=lsp#complete
+"         autocmd FileType objc setlocal omnifunc=lsp#complete
+"         autocmd FileType objcpp setlocal omnifunc=lsp#complete
+"         autocmd FileType ts setlocal omnifunc=lsp#complete
+"     augroup end
+" endif
 
 " Codestats configuration
 let g:codestats_api_key='SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
