@@ -79,7 +79,7 @@ let g:indent_blankline_char_highlight_list = ['Directory', 'ModeMsg', 'WarningMs
 autocmd BufWritePost plugins.lua PackerCompile
 "
 " DDC Engine configuration
-call ddc#custom#patch_global('sources', ['around', 'nvimlsp'])
+call ddc#custom#patch_global('sources', ['nvimlsp'])
 call ddc#custom#patch_global('sourceOptions', {
             \ 'around': {'mark': 'A'},
             \ 'nvimlsp': {'mark': 'lsp'},

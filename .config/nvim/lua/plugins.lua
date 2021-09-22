@@ -13,9 +13,9 @@ return require('packer').startup(function()
     -- Surrounding management
     use 'tpope/vim-surround'
     -- LSP Engine
-    use 'prabirshrestha/vim-lsp'
+    -- use 'prabirshrestha/vim-lsp'
     -- LSP Engine
-    use 'neovim/nvim-lsp'
+    use 'neovim/nvim-lspconfig'
     -- Functions I don't want to write twice
     use 'nvim-lua/plenary.nvim'
     -- Some fancy icons
@@ -75,6 +75,5 @@ return require('packer').startup(function()
     use 'Shougo/ddc-around'
     use 'Shougo/ddc-matcher_head'
     use 'Shougo/ddc-sorter_rank'
-    use 'Shougo/ddc-nextword'
     use 'matsui54/ddc-nvim-lsp-doc'
 end)
