@@ -48,10 +48,18 @@ endif
 " Plugins initialization and configuration
 lua << EOF
 require'plugins'
+require'plugins-cfg'
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.tsserver.setup{}
-require'plugins-cfg'
-require'colorizer'.setup{}
+require'nvim-treesitter.configs'.setup{
+    rainbow = {
+        enable = true,        -- Enable the plugin
+        extended_mode = true, -- Highlight tags, brackets and etc
+        max_file_lines = nil, -- Ignore files with this number of line
+        -- colors = {},       -- Colors configuration
+    }
+}
+require'colorizer'.setup{'*';} -- Apply colorizer to all buffers
 require'neoscroll'.setup{
 -- All these keys will be mapped to their corresponding default scrolling animation
     mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
@@ -69,8 +77,8 @@ EOF
 
 let g:gitblame_highlight_group='Question'
 
-" Run colorizer on start
-autocmd VimEnter * ColorizerToggle
+" " Run colorizer on start
+" autocmd VimEnter * ColorizerToggle
 
 " Indentation guides colors
 let g:indent_blankline_char_highlight_list = ['Directory', 'ModeMsg', 'WarningMsg']
@@ -90,40 +98,11 @@ call ddc#custom#patch_global('sourceOptions', {
 call ddc#enable()
 call ddc_nvim_lsp_doc#enable()
 
-" Redundant configuration of clangd and LSP server
-" Not sure if I will ever need it again, but let's 
-" keep it for a while
-"
-" if executable('clangd')
-"     augroup lsp_clangd
-"         autocmd!
-"         autocmd User lsp_setup call lsp#register_server({
-"                     \ 'name': 'clangd',
-"                     \ 'cmd': {server_info->['clangd']},
-"                     \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-"                     \ })
-"         autocmd User lsp_setup call lsp#register_server({
-"                     \ 'name': 'typescript-language-server',
-"                     \ 'cmd': {server_info->['typescript-language-server', '--stdio']},
-"                     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-"                     \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
-"                     \ })
-"         autocmd FileType c setlocal omnifunc=lsp#complete
-"         autocmd FileType cpp setlocal omnifunc=lsp#complete
-"         autocmd FileType objc setlocal omnifunc=lsp#complete
-"         autocmd FileType objcpp setlocal omnifunc=lsp#complete
-"         autocmd FileType ts setlocal omnifunc=lsp#complete
-"     augroup end
-" endif
-
 " Codestats configuration
 let g:codestats_api_key='SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
 
 " XkbSwitch needs to be turned on
 let g:XkbSwitchEnabled = 1
-
-" Rainbow Parenthesis needs to be turned on
-let g:rainbow_active = 1
 
 " Coloscheme setting
 colorscheme material
