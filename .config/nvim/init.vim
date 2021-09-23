@@ -49,43 +49,8 @@ endif
 lua << EOF
 require'plugins'
 require'plugins-cfg'
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.tsserver.setup{}
-require'nvim-treesitter.configs'.setup{
-    rainbow = {
-        enable = true,        -- Enable the plugin
-        extended_mode = true, -- Highlight tags, brackets and etc
-        max_file_lines = nil, -- Ignore files with this number of line
-        -- colors = {},       -- Colors configuration
-    }
-}
-require'colorizer'.setup{'*';} -- Apply colorizer to all buffers
-require'neoscroll'.setup{
--- All these keys will be mapped to their corresponding default scrolling animation
-    mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-    '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-    hide_cursor = true,          -- Hide cursor while scrolling
-    stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-    use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-    respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-    easing_function = nil,        -- Default easing function
-    pre_hook = nil,              -- Function to run before the scrolling animation starts
-    post_hook = nil,              -- Function to run after the scrolling animation ends
-}
 EOF
 
-let g:gitblame_highlight_group='Question'
-
-" " Run colorizer on start
-" autocmd VimEnter * ColorizerToggle
-
-" Indentation guides colors
-let g:indent_blankline_char_highlight_list = ['Directory', 'ModeMsg', 'WarningMsg']
-
-" Autocompilation on plugins configuration change
-autocmd BufWritePost plugins.lua PackerCompile
-"
 " DDC Engine configuration
 call ddc#custom#patch_global('sources', ['nvimlsp'])
 call ddc#custom#patch_global('sourceOptions', {
@@ -97,6 +62,8 @@ call ddc#custom#patch_global('sourceOptions', {
             \ })
 call ddc#enable()
 call ddc_nvim_lsp_doc#enable()
+
+" let g:gitblame_highlight_group='Question'
 
 " Codestats configuration
 let g:codestats_api_key='SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'

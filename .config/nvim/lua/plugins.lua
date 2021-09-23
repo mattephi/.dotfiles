@@ -8,51 +8,93 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function()
-    -- Packer can manage itself
+    -- NOTE: Reviewed plugins
+    -- Packer Plugin Manager
     use 'wbthomason/packer.nvim'
-    -- Surrounding management
+    -- Surroundings management
     use 'tpope/vim-surround'
-    -- LSP Engine
-    -- use 'prabirshrestha/vim-lsp'
-    -- LSP Engine
-    use 'neovim/nvim-lspconfig'
-    -- Functions I don't want to write twice
+    -- Utility functions module
     use 'nvim-lua/plenary.nvim'
-    -- Some fancy icons
+    -- Icons plugin
     use 'kyazdani42/nvim-web-devicons'
-    -- Nice fancy finder
-    use {
-        'nvim-telescope/telescope.nvim',
-           requires = { {'nvim-lua/plenary.nvim'} }
-    }
     -- Material theme
     use 'marko-cerovac/material.nvim'
     -- Commenting shortcuts
     use 'tpope/vim-commentary'
     -- Colorized parenthesis
     use 'p00f/nvim-ts-rainbow'
-    -- Simplify word jumping
-    use 'unblevable/quick-scope'
     -- Auto surrounding
     use 'jiangmiao/auto-pairs'
-    use {
-        'shadmansaleh/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
     -- Codestats tracking plugin
     use 'https://gitlab.com/code-stats/code-stats-vim'
+    vim.g.codestats_api_key = 'SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
     -- Auto layout switcher
     use 'lyokha/vim-xkbswitch'
+    vim.g.XkbSwitchEnabled = 1
     -- Colorizer
     use 'norcalli/nvim-colorizer.lua'
+    require'colorizer'.setup{'*';} -- Apply colorizer to all buffers
     -- Indent guides
     use 'lukas-reineke/indent-blankline.nvim'
+    require'indent_blankline'.setup{
+        char_highlight_list = {
+            'Directory',
+            'ModeMsg',
+            'WarningMsg'
+        }
+    }
     -- Smooth Scrolling (while it is unstable in neovide)
     use 'karb94/neoscroll.nvim'
+    require'neoscroll'.setup{
+    -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+        '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil,        -- Default easing function
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,              -- Function to run after the scrolling animation ends
+    }
+
     -- Syntax Tree and highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
+    }
+    require'nvim-treesitter.configs'.setup{
+        rainbow = {
+            enable = true,        -- Enable the plugin
+            extended_mode = true, -- Highlight tags, brackets and etc
+            max_file_lines = nil, -- Ignore files with this number of line
+            -- colors = {},       -- Colors configuration
+        }
+    }
+    -- Deno JS/TS env
+    use 'vim-denops/denops.vim'
+    -- Git Blamer
+    use 'f-person/git-blame.nvim'
+    vim.g.gitblame_highlight_group='Question'
+    -- TODO: Review following plugins
+    -- LSP Engine
+    -- use 'prabirshrestha/vim-lsp'
+    -- LSP Engine
+    use 'neovim/nvim-lspconfig'
+    require'lspconfig'.clangd.setup{}
+    require'lspconfig'.tsserver.setup{}
+
+    -- Nice fancy finder
+    use {
+        'nvim-telescope/telescope.nvim',
+           requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    -- Simplify word jumping
+    use 'unblevable/quick-scope'
+    use {
+        'shadmansaleh/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
     -- NeoVim dashboard
     -- use 'glepnir/dashboard-nvim'
@@ -60,14 +102,10 @@ return require('packer').startup(function()
     use 'preservim/nerdtree'
     -- NerdTree visual operations
     use 'PhilRunninger/nerdtree-visual-selection'
-    -- Git Blamer
-    use 'f-person/git-blame.nvim'
     -- Registers Peekup
     use 'gennaro-tedesco/nvim-peekup'
     -- LSP Statusline
     use 'nvim-lua/lsp-status.nvim'
-    -- Deno JS/TS env
-    use 'vim-denops/denops.vim'
     -- DDN Completion
     use 'Shougo/ddc.vim'
     -- DDN Nvim LSP Client
