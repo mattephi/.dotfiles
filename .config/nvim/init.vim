@@ -63,14 +63,6 @@ call ddc#custom#patch_global('sourceOptions', {
 call ddc#enable()
 call ddc_nvim_lsp_doc#enable()
 
-" let g:gitblame_highlight_group='Question'
-
-" Codestats configuration
-let g:codestats_api_key='SFMyNTY.YlRoa2IzUndhV1U9IyNORGt5TVE9PQ.l6MhQliSTr9ffJiCxC4kmLORtZzAScsiDp_YcWvBgrM'
-
-" XkbSwitch needs to be turned on
-let g:XkbSwitchEnabled = 1
-
 " Coloscheme setting
 colorscheme material
 
@@ -89,12 +81,4 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " NerdTree hotkeys
-nnoremap <C-n> :NERDTree<CR>
-
-" Neovide configuration
-let neovide_remember_window_size=v:true
-let g:neovide_refresh_rate=75
-let g:neovide_cursor_antialiasing=v:true
-let g:neovide_input_use_logo=v:true
-let g:neovide_window_floating_opacity=1
-let g:neovide_window_floating_blur=0
+nnoremap <C-n> <cmd>NERDTree<CR>

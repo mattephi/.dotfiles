@@ -31,7 +31,7 @@ return require('packer').startup(function()
     -- Auto layout switcher
     use 'lyokha/vim-xkbswitch'
     vim.g.XkbSwitchEnabled = 1
-    -- Colorizer
+    -- Colorizer #000
     use 'norcalli/nvim-colorizer.lua'
     require'colorizer'.setup{'*';} -- Apply colorizer to all buffers
     -- Indent guides
@@ -96,8 +96,6 @@ return require('packer').startup(function()
         'shadmansaleh/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
-    -- NeoVim dashboard
-    -- use 'glepnir/dashboard-nvim'
     -- NerdTree files manager
     use 'preservim/nerdtree'
     -- NerdTree visual operations
@@ -114,4 +112,10 @@ return require('packer').startup(function()
     use 'Shougo/ddc-matcher_head'
     use 'Shougo/ddc-sorter_rank'
     use 'matsui54/ddc-nvim-lsp-doc'
+
+    -- NeoVide setup
+    vim.g.neovide_refresh_rate = 75
+    vim.g.neovide_cursor_antialiasing = true
+    -- vim.g.neovide_input_use_logo = true
+    vim.g.neovide_floating_blur = 0
 end)
