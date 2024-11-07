@@ -3,13 +3,13 @@ if status is-interactive
 end
 
 if status --is-login
-    dbus-run-session Hyprland &
+    Hyprland &
 end
 
-if set -q ZELLIJ
-else
-    zellij
-end
+# if set -q ZELLIJ
+# else
+#     zellij
+# end
 
 function dotfiles
     git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $argv
